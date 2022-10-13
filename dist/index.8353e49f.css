@@ -7,7 +7,7 @@ body {
 
 .container .item {
   width: 100px;
-  height: 50px;
+  height: 100px;
   background: tomato;
   margin: 20px;
 }
@@ -53,6 +53,75 @@ body {
 
 .global4 {
   background: orange;
+}
+
+.default {
+  width: 100px;
+  height: 100px;
+  background: beige;
+}
+
+body {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.container .item {
+  width: 100px;
+  height: 100px;
+  background: tomato;
+  margin: 20px;
+}
+
+.container .item.active {
+  color: tomato;
+  background: #ccc;
+}
+
+.container .item:nth-child(1) {
+  font-weight: bold;
+}
+
+.container .item .desc {
+  font-size: 14px;
+}
+
+.container2 .item2 {
+  width: 100px;
+  height: 100px;
+}
+
+.outside_box {
+  width: 100px;
+  height: 100px;
+  color: #e96900;
+  background: #ddd;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.global1, .global2 {
+  background: orange;
+}
+
+.global3 {
+  background: pink;
+}
+
+.global4 {
+  background: orange;
+}
+
+.default {
+  width: 100px;
+  height: 100px;
+  background: beige;
 }
 
 /*# sourceMappingURL=index.8353e49f.css.map */

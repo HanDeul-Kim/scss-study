@@ -1,0 +1,150 @@
+@charset "UTF-8";
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .item {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  background: tomato;
+}
+.container .item.active {
+  color: tomato;
+  background: #ccc;
+}
+.container .item:nth-child(1) {
+  font-weight: bold;
+}
+.container .item .desc {
+  font-size: 14px;
+}
+
+.container2 .item2 {
+  width: 100px;
+  height: 100px;
+}
+.outside_box {
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+}
+
+.outside_box {
+  color: #e96900;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.global1 {
+  background: orange;
+}
+
+.global2 {
+  background: orange;
+}
+
+.global3 {
+  background: pink;
+}
+
+.global4 {
+  background: orange;
+}
+
+.default {
+  width: 100px;
+  height: 100px;
+  background: beige;
+}
+
+.calc {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+.calc .calc_child {
+  width: 50px;
+  height: 50px;
+  background: purple;
+}
+
+.calc:after {
+  content: "helloWorld";
+  flex-flow: row-reverse wrap;
+}
+
+.logic {
+  display: block;
+  width: 200px;
+  height: 100px;
+  background: pink;
+}
+
+.logic2 {
+  width: 100px;
+  height: 100px;
+  background: gray;
+  border-radius: 30px;
+}
+
+.mix_box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  margin: 10px 0;
+}
+
+.mix_box2 {
+  width: 50px;
+  height: 50px;
+  background: red;
+  margin: 10px 0;
+}
+
+.mix_box3 {
+  width: 100px;
+  height: 100px;
+  background: brown;
+  margin: 10px 0;
+}
+
+.mix_box4 {
+  width: 100px;
+  height: 200px;
+  background: brown;
+  margin: 10px 0;
+}
+
+.include {
+  width: 50px;
+  height: 50px;
+  background: magenta;
+}
+
+.include2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  font-size: 12px;
+  font-weight: bold;
+  background: pink;
+}
+.include2:after {
+  content: "가상요소도 가능";
+}
+.include2 span.hidden {
+  width: 50px;
+  height: 50px;
+  background: blue;
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */

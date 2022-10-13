@@ -17,7 +17,7 @@
    * lists = 공백이나 ,로 구분된 값의 목록 <br>**ex) (apple, banana, orange) or apple banana orange 가로 열고 닫고 자유**
    * maps = list와 유사하나 값이 key : value 형태 <br>**ex) (apple : a, banana : b) 꼭 가로 열어야함**
 
-4. 중첩 [참고](url주소~)
+4. 중첩 ([참고](https://handeul-kim.github.io/scss-study/style.scss))
     * &(상위 선택자 참조)
       * 중첩 안에서 & 키워드는 상위(부모) 선택자를 참조하여 치환. <br>**ex) &.active일때 active의 className이 붙으면 처리할 css**
     * @at-root (중첩 벗어나기)
@@ -35,3 +35,13 @@
       * 기존에 만든 변수의 값을 새로운 변수의 값에 넣을수 있다.<br> **ex) $color-old: #fff라는 변수를 만들어놓고 새로운 변수 $color-new: $color-old**
     * !global (전역으로 설정)
       * !global 플래그를 사용하면 변수의 유효범위를 전역으로 설정할 수 있다.<br>(특정 클래스에서 선언한 변수여도 밖의 다른 태그 클래스도 적용 됨.)<br>**ex) $global-test: orange !global;**
+    * !default (초깃값 설정)
+      * !default 플래그는 할당되지 않은 변수의 초깃값을 설정한다. 즉, 할당되어있는 변수가 있다면 변수가 기존 할당 값을 사용한다.
+    * ${} 문자 보간
+      * #{}을 이용해서 코드의 어디든지 변수 값을 넣을 수 있다. ES6의 템플릿 리터럴과 유사한 것 같다.
+      * **ex) $test-text: unquote('product_img01')**<br>  **url("./img/#{test-text}.png")**
+      * Sass의 내장 함수 unquote()는 문자에서 따옴표를 제거합니다.
+6. 연산
+    * 숫자, 문자, 논리연산자, 등 javascript 연산자와 비슷함. (scss파일 참고)
+7. 재활용 (Mixins)
+    * sass Mixins는 스타일 시트 전체에서 재사용 할 css 선언 그룹을 정의 한다.<br>Mixins는 **선언하기(@Mixin)와 포함하기(@include)** 두 가지로 만들어서(선언) 사용하기(포함)로 생각하면 좋다.

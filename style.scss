@@ -1,27 +1,33 @@
-body{
-    display:flex;
+body {
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
-$color-test: #e96900; 
+
+$color-test: #e96900;
 $color-primary: $color-test;
+
 .container {
     $size: 100px;
+
     .item {
         width: $size;
-        height: $size / 2;
-        margin:20px;
+        height: $size;
+        margin: 20px;
         background: tomato;
+
         &.active {
-            color:tomato;
+            color: tomato;
             background: #ccc;
         }
+
         &:nth-child(1) {
             font-weight: bold;
         }
+
         .desc {
-            font-size:14px;
+            font-size: 14px;
         }
     }
 }
@@ -29,45 +35,165 @@ $color-primary: $color-test;
 .container2 {
     $w: 100px;
     $h: 100px;
+
     .item2 {
         width: $w;
         height: $h;
     }
+
     @at-root .outside_box {
         width: $w;
         height: $h;
         background: #ddd;
     }
 }
+
 .outside_box {
     color: $color-primary;
+
     font: {
         size: 16px;
         weight: bold;
-    };
+    }
+
+    ;
+
     margin: {
         top: 10px;
         left: 10px;
-    };
+    }
+
+    ;
+
     padding: {
         bottom: 10px;
         right: 10px;
     }
 }
+
 .global-wrap {
-    $global-test:blue;
+    $global-test: blue;
 }
+
 .global1 {
     $global-test: orange !global;
     background: $global-test;
 }
+
 .global2 {
     background: $global-test;
 }
+
 .global3 {
     $global-test: pink;
     background: $global-test;
 }
+
 .global4 {
     background: $global-test;
+}
+
+$default-color: beige;
+
+.default {
+    width: 100px;
+    height: 100px;
+    $default-color: green !default;
+    background: $default-color;
+}
+
+.calc {
+    $size2: 100px;
+    width: $size2;
+    height: $size2;
+    background: yellow;
+
+    .calc_child {
+        width: $size2 / 2;
+        height: 50px;
+        background: purple;
+    }
+}
+.calc:after{
+    // 속성값 시작이 ""면 ""로 결과 반환 ("hello World")
+    content:"hello" + World;
+    // 속성값 시작이 ""가 아니면 ""없이 반환 (row-reverse wrap)
+    flex-flow: row + "-reverse" + " " + wrap;
+}
+$testLogic: 100px;
+.logic{
+    display:block;
+    @if($testLogic > 50px and $testLogic > 90px) {
+        width: 200px;
+        height:100px;
+        background: pink;
+    }
+}
+.logic2{
+    width: 100px;
+    height: 100px;
+    background: gray;
+    @if not ($testLogic == 50px) {
+        border-radius: 30px;
+    }
+}
+// 재사용 Mixins
+@mixin size ($w, $h) {
+    width: $w;
+    height: $h;
+    background: red;
+    margin:10px 0;
+}
+.mix_box{
+    @include size(100px, 100px);
+}
+.mix_box2{
+    @include size(50px, 50px);
+}
+// 축약형
+@mixin size2 ($w: 100px, $h: 100px) {
+    width: $w;
+    height: $h;
+    background: brown;
+    margin:10px 0;
+}
+.mix_box3{
+    @include size2
+}
+.mix_box4{
+    @include size2($h: 200px);
+}
+// 축약형2
+@mixin size3 {
+    width: 50px;
+    height: 50px;
+    background: magenta;
+}
+.include {
+    @include size3;
+}
+@mixin small {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    font: {
+        size: 12px;
+        weight: bold;
+    }
+    background: pink;
+    // 가상요소도 가능
+    &:after{
+      content:'가상요소도 가능';  
+    }
+    span.hidden {
+        width: 50px;
+        height: 50px;
+        background: blue;
+        color:#fff;
+    }
+}
+.include2 {
+    @include small;
 }
