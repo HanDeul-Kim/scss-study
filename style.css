@@ -6,6 +6,10 @@ body {
   align-items: center;
 }
 
+.br {
+  margin: 100px 0;
+}
+
 .container .item {
   width: 100px;
   height: 100px;
@@ -147,4 +151,89 @@ body {
   height: 50px;
   background: blue;
   color: #fff;
+}
+
+.keyword .k-item {
+  background: green;
+  border: 5px solid yellow;
+}
+
+.keyword .k-item {
+  background: green;
+  border: 1px solid blue;
+}
+
+.test {
+  width: 1;
+  height: 2;
+  background: 3, 4, 5;
+}
+
+.div {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.span {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  font-family: sans-serif;
+}
+
+.a {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+.content1:after {
+  content: "./logo1.png";
+}
+
+.content2:after {
+  content: "./logo2.png";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: pink;
+}
+
+.e-btn, .e-btn2 {
+  margin: 50px 0;
+  border-radius: 20px;
+  padding: 5px 0;
+  cursor: pointer;
+  color: #fff;
+  background: #000;
+}
+
+.e-btn2 {
+  background: dodgerblue;
+}
+
+.function-container {
+  display: flex;
+  width: 100%;
+  background: orange;
+}
+.function-container .item:nth-child(1) {
+  width: 100px;
+  background: beige;
+}
+.function-container .item:nth-child(2) {
+  width: 600px;
+  background: yellow;
+}
+.function-container .item:nth-child(3) {
+  width: 500px;
+  background: tomato;
+}
+
+.test3 div {
+  width: 200px;
+  background: brown;
 }/*# sourceMappingURL=style.css.map */
