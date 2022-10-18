@@ -4,9 +4,11 @@ body {
     justify-content: center;
     align-items: center;
 }
-.br{
-    margin:100px 0;
+
+.br {
+    margin: 100px 0;
 }
+
 $color-test: #e96900;
 $color-primary: $color-test;
 
@@ -116,87 +118,107 @@ $default-color: beige;
         background: purple;
     }
 }
-.calc:after{
+
+.calc:after {
     // 속성값 시작이 ""면 ""로 결과 반환 ("hello World")
-    content:"hello" + World;
+    content: "hello" + World;
     // 속성값 시작이 ""가 아니면 ""없이 반환 (row-reverse wrap)
     flex-flow: row + "-reverse" + " " + wrap;
 }
+
 $testLogic: 100px;
-.logic{
-    display:block;
+
+.logic {
+    display: block;
+
     @if($testLogic > 50px and $testLogic > 90px) {
         width: 200px;
-        height:100px;
+        height: 100px;
         background: pink;
     }
 }
-.logic2{
+
+.logic2 {
     width: 100px;
     height: 100px;
     background: gray;
-    @if not ($testLogic == 50px) {
+
+    @if not ($testLogic ==50px) {
         border-radius: 30px;
     }
 }
+
 // * 재사용 Mixins *
 @mixin size ($w, $h) {
     width: $w;
     height: $h;
     background: red;
-    margin:10px 0;
+    margin: 10px 0;
 }
-.mix_box{
+
+.mix_box {
     @include size(100px, 100px);
 }
-.mix_box2{
+
+.mix_box2 {
     @include size(50px, 50px);
 }
+
 // 축약형
 @mixin size2 ($w: 100px, $h: 100px) {
     width: $w;
     height: $h;
     background: brown;
-    margin:10px 0;
+    margin: 10px 0;
 }
-.mix_box3{
+
+.mix_box3 {
     @include size2
 }
-.mix_box4{
+
+.mix_box4 {
     @include size2($h: 200px);
 }
+
 // 축약형2
 @mixin size3 {
     width: 50px;
     height: 50px;
     background: magenta;
 }
+
 .include {
     @include size3;
 }
+
 @mixin small {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 150px;
     height: 150px;
+
     font: {
         size: 12px;
         weight: bold;
     }
+
     background: pink;
+
     // 가상요소도 가능
-    &:after{
-      content:'가상요소도 가능';  
+    &:after {
+        content: '가상요소도 가능';
     }
+
     // 사용 할 요소 안에 span태그가 있는데 그 span태그의 class가 hidden일때
     span.hidden {
         width: 50px;
         height: 50px;
         background: blue;
-        color:#fff;
+        color: #fff;
     }
 }
+
 .include2 {
     @include small;
 }
@@ -208,15 +230,16 @@ $testLogic: 100px;
 }
 
 // 순서상 첫번째 파라미터만 받아옴 그런데 나는 색을 바꾸고싶음  
-.keyword{
-    .k-item{
+.keyword {
+    .k-item {
         background: green;
         @include keyword(5px);
     }
 }
+
 // 솔루션 
-.keyword{
-    .k-item{
+.keyword {
+    .k-item {
         background: green;
         @include keyword($c: blue);
     }
@@ -238,18 +261,16 @@ $testLogic: 100px;
     height: $h;
     background: $bg;
 }
-.test{
-    @include var(1, 2, 3, 4, 5)
-    // width: 1, height: 2, background: 3,4,5
+
+.test {
+    @include var(1, 2, 3, 4, 5) // width: 1, height: 2, background: 3,4,5
 }
 
 // 가변인수2
-@mixin font(
-    $style: normal,
+@mixin font($style: normal,
     $weight: normal,
     $size: 18px,
-    $family: sans-serif
-) {
+    $family: sans-serif) {
     font: {
         style: $style;
         weight: $weight;
@@ -257,20 +278,22 @@ $testLogic: 100px;
         family: $family;
     }
 }
-.div{
+
+.div {
     // 문자열 담긴 변수 생성
-    $font-values: italic, bold, 20px, sans-serif;
-    
+    $font-values: italic,
+    bold,
+    20px,
+    sans-serif;
+
     // style: italic, weight:bold, size:20px ...
     @include font($font-values...);
 }
 
-@mixin font2(
-    $style: normal,
+@mixin font2($style: normal,
     $weight: normal,
     $size: 18px,
-    $family: sans-serif
-) {
+    $family: sans-serif) {
     font: {
         style: $style;
         weight: $weight;
@@ -278,18 +301,17 @@ $testLogic: 100px;
         family: $family;
     }
 }
-.span{
+
+.span {
     // 필요한 값만 키워드인수로 변수에 담아 전달 
     $font-values: (style: italic, size: 22px);
     @include font2($font-values...);
 }
 
-@mixin font3(
-    $style: normal,
+@mixin font3($style: normal,
     $weight: normal,
     $size: 18px,
-    $family: sans-serif
-) {
+    $family: sans-serif) {
     font: {
         style: $style;
         weight: $weight;
@@ -297,23 +319,26 @@ $testLogic: 100px;
         family: $family;
     }
 }
-.a{
+
+.a {
     // 필요한 값만 키워드 인수로 전달 
     @include font3((style: italic, size:15px)...);
 }
 
 @mixin icon ($url) {
     &:after {
-        content: $url; 
+        content: $url;
         @content;
     }
 }
-.content1{
+
+.content1 {
     @include icon('./logo1.png')
 }
-.content2{
+
+.content2 {
     @include icon('./logo2.png') {
-        display:block;
+        display: block;
         width: 10px;
         height: 10px;
         background: pink;
@@ -322,15 +347,16 @@ $testLogic: 100px;
 
 // Extend 확장 
 // extend 사용은 권장하지 않는다. Mixin으로 대체하자! 
-.e-btn{
-    margin:50px 0;
+.e-btn {
+    margin: 50px 0;
     border-radius: 20px;
-    padding:5px 0;
+    padding: 5px 0;
     cursor: pointer;
-    color:#fff;
+    color: #fff;
     background: #000;
 }
-.e-btn2{
+
+.e-btn2 {
     @extend .e-btn;
     background: dodgerblue;
 }
@@ -339,28 +365,176 @@ $testLogic: 100px;
 @function columns($num: 1, $columns: 12, $Mwidth: 1200px) {
     @return $Mwidth * ($num / $columns);
 }
-.function-container{
-    display:flex;
+
+.function-container {
+    display: flex;
     width: 100%;
     background: orange;
+
     .item:nth-child(1) {
         width: columns();
         background: beige;
     }
+
     .item:nth-child(2) {
         width: columns(6);
         background: yellow;
     }
+
     .item:nth-child(3) {
         width: columns(5);
         background: tomato;
     }
 }
+
 // if 함수 
-.test3{
+.test3 {
     $width: 200px;
+
     div {
         width: if($width > 50px, $width, null);
         background: brown;
+    }
+}
+
+// @if
+@function limitSize($size) {
+    @if($size >=0 and $size <=200px) {
+        @return 200px;
+    }
+
+    @else if($size >=0 and $size <=190px) {
+        @return 150px;
+    }
+
+    @else {
+        @return 800px;
+    }
+
+}
+
+.test4 {
+    width: limitSize(180);
+    height: limitSize(250);
+    background: orange;
+}
+
+// unitless 
+@mixin positionCenter($w, $h, $p: relative) {
+
+    // $p가 absolute or fixed or relative가 아니거나 or static이 아닐때
+    @if($p ==absolute or $p ==fixed or not $p ==relative or not $p ==static) {
+        width: if(unitless($w), #{$w}px, $w);
+        height: if(unitless($h), #{$h}px, $h);
+        position: $p;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+.test5 div {
+    margin: 10px 0;
+    border: 2px solid blue;
+
+}
+
+.test-box1 {
+    @include positionCenter(30px, 20px);
+}
+
+.test-box2 {
+    @include positionCenter(50, 50, fixed);
+}
+
+.test-box3 {
+    @include positionCenter(100, 200, relative);
+}
+
+// for문 ( 변수는 관례상 $i로 많이 함 )
+.test6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// through 1에서 4까지 반복
+@for $i from 1 through 4 {
+    .through:nth-child(#{$i}) {
+        font-size: 16px * $i;
+    }
+}
+
+// to 1에서 4 직전까지만 반복
+@for $i from 1 to 4 {
+    .through:nth-child(#{$i}) {
+        font-size: 16px * $i;
+    }
+}
+
+// @each - List
+
+// ex)1
+// $fruits-list: (apple, orange, banana, mango);
+// .fruits-l {
+//     @each $i in $fruits-list {
+//         li.#{$i} {
+//             background: url('./img/#{$i}');
+//         }
+//     }
+// }
+
+// ex)2
+$fruits-list: apple, orange, banana, mango;
+
+.fruits-l {
+    @each $i in $fruits-list {
+        // index 내장함수 $i라는 매개변수가 $fruits라는 데이터 안에서 몇번째에 속하는지 알아내고싶을때 사용. 
+        $index: index($fruits-list, $i);
+
+        li:nth-child(#{$index}) {
+            background: url('./img/img#{$index}.png'); // img1~4.png
+        }
+    }
+}
+
+
+
+// @each - Map 
+
+$fruits-map: (
+    apple: korea,
+    orange: china,
+    banana: japan,
+    mango: india
+);
+
+.fruits-m {
+    // ex)1
+    // @each $key, $value in $fruits-map {
+    //     .#{$key} {
+    //         background: url('./img/#{$value}.png');
+    //     }
+    // }
+
+    
+
+    // ex)2 
+    // map데이터일때 index() 내장함수를 사용할 수 없다. 
+    // 그래서 숫자를 뽑아내고싶을때 map데이터를 list데이터로 변환해주는 작업이 필요하다.
+    // 변환할 수 있는 내장함수 map-keys(), map-values()가 있다.
+    // ex) map-keys($fruits-map) => (apple, orange, banana, mango)
+    // ex) map-values($fruits-map) => (korea, china, japan, india)
+
+    @each $key, $value in $fruits-map {
+        $key--list: map-keys($fruits-map); // apple, orange, banana, mango
+        $index: index($key--list, $key);
+
+        li:nth-child(#{$index}){
+            font-size: 16px * $index;
+            background: url('./img/#{$value}.png');
+        }
     }
 }
